@@ -8,22 +8,21 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState({show:false,msg:''})
   const [movies, setMovies] = useState([])
-  const [query, setQuery] = useState('batman')
+  const [query, setQuery] = useState('a team')
 
   const fetchMovies = async (url) => {
     setLoading(true)
     try {
       const response = await fetch(url)
       const data = await response.json()
-      
+
       if (data.Response === 'True') {
         setMovies(data.Search)
-        setError({show:false, msg:''})
+        setError({show:false,msg:''})
       } else {
-        setError({show:false, msg:''})
+        setError({show:false,msg:''})
       }
       setLoading(false)
-
     } catch (error) {
       console.log(error)
     }
@@ -33,7 +32,7 @@ const AppProvider = ({ children }) => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`)
   }, [query])
 
-  return <AppContext.Provider value={isLoading, error, movies, query, setQuery}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{loading, error, movies, query, setQuery}}>{children}</AppContext.Provider>
 
 }
 
