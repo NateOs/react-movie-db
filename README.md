@@ -7,4 +7,4 @@ run 'npm start' in the terminal
 you can now explore my app.
 
 
-Hosted here: ![React-Moviedb](https://react-moviedb1.netlify.app/)
+Hosted here: https://react-moviedb1.netlify.app
