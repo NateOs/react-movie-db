@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { API_ENDPOINT } from './context'
 
-
 const useFetch = (urlParams) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState({show:false, msg: ''})
@@ -14,7 +13,7 @@ const useFetch = (urlParams) => {
                 const data = await response.json()
             
                 if (data.Response === 'True'){
-                    setData(data.Search)
+                    setData(data.Search ? data.Search : data)
                     setError({show:false, msg:''})
                 } else {
                     setError({show:true, msg:data.Error })
@@ -27,7 +26,6 @@ const useFetch = (urlParams) => {
 
     useEffect(() => {
         getData(`${API_ENDPOINT}${urlParams}`)
-        console.log(data)
     }, [urlParams])
 
     return { loading, data, error }
