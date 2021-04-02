@@ -1,4 +1,4 @@
-### Simple Dark mode feature project
+### Simple moviedb application in React
 
 #### To run :
 Git clone the repo
